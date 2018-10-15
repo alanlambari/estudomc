@@ -121,7 +121,7 @@ public class DBService {
 		Cliente cli1 = new Cliente(null, "Alan Junqueira Franco", "alanlambari@gmail.com", "04067132603", TipoCliente.PESSOA_FISICA,  bCryptPasswordEncoder.encode("123"));
 		cli1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));	
 		
-		Cliente cli2 = new Cliente(null, "Rafaela Rodrigues Bocardi Franco", "alanlambari@gmail.com", "04067132603", TipoCliente.PESSOA_FISICA,  bCryptPasswordEncoder.encode("123"));
+		Cliente cli2 = new Cliente(null, "Rafaela Rodrigues Bocardi Franco", "alan@gmail.com", "04067132603", TipoCliente.PESSOA_FISICA,  bCryptPasswordEncoder.encode("123"));
 		cli2.getTelefones().addAll(Arrays.asList("27363324", "93838394"));
 		cli2.addPerfil(Perfil.ADMIN);
 		
