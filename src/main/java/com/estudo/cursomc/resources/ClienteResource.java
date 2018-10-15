@@ -19,9 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.estudo.cursomc.domain.Cliente;
+import com.estudo.cursomc.domain.enums.Perfil;
 import com.estudo.cursomc.dto.ClienteDTO;
 import com.estudo.cursomc.dto.ClienteNewDTO;
+import com.estudo.cursomc.security.UserSS;
 import com.estudo.cursomc.services.ClienteService;
+import com.estudo.cursomc.services.UserService;
+import com.estudo.cursomc.services.exceptions.AuthorizationException;
 
 @RestController
 @RequestMapping(value="/clientes")
@@ -32,6 +36,12 @@ public class ClienteResource {
 	
 	@RequestMapping(value="/{id}",  method=RequestMethod.GET)
 	public ResponseEntity<Cliente> find(@PathVariable Integer id) {
+		
+		UserSS user = UserService.authenticated();
+		if (user==null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
 		Cliente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
