@@ -37,15 +37,23 @@ public class ClienteResource {
 	
 	@RequestMapping(value="/{id}",  method=RequestMethod.GET)
 	public ResponseEntity<Cliente> find(@PathVariable Integer id) {
-		
 		UserSS user = UserService.authenticated();
 		if (user==null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
 			throw new AuthorizationException("Acesso negado");
 		}
-		
 		Cliente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
+	
+	
+	@RequestMapping(value="/email", method=RequestMethod.GET)
+	public ResponseEntity<Cliente> find(@RequestParam(value="value") String email) {
+		Cliente obj = service.findByEmail(email);
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	
+	
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.GET)
