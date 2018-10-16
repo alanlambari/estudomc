@@ -53,15 +53,15 @@ public class Cliente implements Serializable {
 	private List<Pedido> pedidos = new ArrayList<>();
 	
 	
-	private String imageUrl;
+	//private String imageUrl;
 	
-	public String getImageUrl() {
-		return imageUrl;
-	}
+	//public String getImageUrl() {
+		//return imageUrl;
+	//}
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+	//public void setImageUrl(String imageUrl) {
+		//this.imageUrl = imageUrl;
+	//}
 
 	public Cliente() {
 		addPerfil(Perfil.CLIENTE);
