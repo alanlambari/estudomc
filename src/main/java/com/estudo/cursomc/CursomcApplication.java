@@ -11,8 +11,8 @@ import com.estudo.cursomc.services.S3Service;
 public class CursomcApplication implements CommandLineRunner {
 	
 	
-	@Autowired
-	S3Service s3Service;
+	//@Autowired
+	//S3Service s3Service;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -20,7 +20,7 @@ public class CursomcApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		s3Service.uploadFile("C:\\temp\\alan.jpg");
+		//s3Service.uploadFile("C:\\temp\\alan.jpg");
 		
 	}
 }
